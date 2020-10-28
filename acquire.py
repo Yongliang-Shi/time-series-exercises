@@ -62,12 +62,16 @@ def get_store_data():
 
 # %%
 def get_opsd_germany():
-    filename = 'opsd_germany.csv'
+    """
+    This function uses or creates the opsd_germany_daily csv and returns a df
+    """
+    filename = 'opsd_germany_daily.csv'
     if os.path.isfile(filename):
         return pd.read_csv(filename, index_col=0)
     else: 
-        df_opsd = pd.read_csv('https://raw.githubusercontent.com/jenfly/opsd/master/opsd_germany_daily.csv', index_col=0)
-        return df_opsd
+        df = pd.read_csv('https://raw.githubusercontent.com/jenfly/opsd/master/opsd_germany_daily.csv')
+        df.to_csv('opsd_germany_daily.csv')
+        return df
 
 # %%
 def get_store_data_2():
